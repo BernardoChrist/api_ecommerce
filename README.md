@@ -37,5 +37,21 @@ O objetivo deste projeto é desenvolver uma API RESTful para um E-commerce, segu
 
   <h3>Consulta de Endereço do Cliente</h3>
   <li>Os dados do endereço do cliente são obtidos a partir de uma API externa de consulta de CEP.</li>
-  
-  
+
+  <h2>Tecnologias Utilizadas</h2>
+ <img src="https://github.com/eduardocs90/POO2023_Grupo6/assets/141193350/da426343-ad69-4070-af0e-b81ac4303722" height="40" width="40"> <a href="https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html">Java 17</a> 
+
+ <img src="https://github.com/eduardocs90/POO2023_Grupo6/assets/141193350/0ae95b40-0108-4e12-9b64-b1c8d75ce611" height="30" width="30"> <a href="https://spring.io/tools">Spring Tools Suite 4</a> 
+ 
+ <img src="https://github.com/BernardoChrist/api_ecommerce/assets/141193350/95c4a61e-d63c-45db-9780-ed28bc64b5ff" height="40" width="40"> <a href="https://start.spring.io">Spring Boot</a> 
+
+<img src="https://github.com/BernardoChrist/api_ecommerce/assets/141193350/1796ae01-ef02-4c15-8408-d1aa55e43736" height="40" width="40"> <a href="https://maven.apache.org">Maven</a> 
+
+<img src="https://github.com/BernardoChrist/api_ecommerce/assets/141193350/ffb0b7a3-afec-44e5-a5bc-6075fe585e0d" height="40" width="40"> <a href="https://www.postgresql.org">PostgreSQL</a> 
+
+<h2>Autores</h2>  
+<div align="center">
+<img src="https://cdn.discordapp.com/attachments/1135262336819679372/1140675577733464254/github-logo-git-hub-icon-with-text-on-white-and-black-background-free-vector_2-removebg-preview.png" height="100" width="100"> <br /><a href="https://github.com/BernardoChrist">Bernardo Christ</a> | <a href="https://github.com/leignel">Cristian Leignel</a> | <a href="https://github.com/bordeguilherme">Gulherme Borde</a> | <a href="https://github.com/Igor-Arauj0">Igor Araujo</a> | <a href="https://github.com/PalomaPts">Paloma Tavares</a> | <a href="https://github.com/sh9bba">Felipe Moura</a> 
+  </div>
+
+
