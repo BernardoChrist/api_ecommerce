@@ -6,7 +6,7 @@
   <div align="center">
     <img src="https://github.com/BernardoChrist/api_ecommerce/assets/141193350/0a910d75-a304-4838-ba58-8ae00970408e"alt="E-commerce Grupo 5">
   </div>
-
+</br>
   <p> Bem-vindo ao repositório do projeto de conclusão da disciplina "API RESTful" na Residência de Software. Este projeto consiste na criação de uma API RESTful para um sistema de E-commerce com base nas regras de negócio e requisitos especificados neste documento.</p>
 
   <h2>Descrição</h2>
