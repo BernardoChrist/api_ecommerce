@@ -1,6 +1,7 @@
 package com.residencia.ecommerce.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -38,13 +40,16 @@ public class Pedido {
 	@ManyToOne
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
 	private Cliente cliente;
+	
+	@OneToMany(mappedBy = "pedido")
+	private List<ItemPedido> itemPedido;
 
 	// constructors
 	public Pedido() {
 	}
 
 	public Pedido(Long idPedido, Date dataPedido, Date dataEntrega, Date dataEnvio, String status, Double valorTotal,
-			Cliente cliente) {
+			Cliente cliente, List<ItemPedido> itemPedido) {
 		this.idPedido = idPedido;
 		this.dataPedido = dataPedido;
 		this.dataEntrega = dataEntrega;
@@ -52,8 +57,10 @@ public class Pedido {
 		this.status = status;
 		this.valorTotal = valorTotal;
 		this.cliente = cliente;
+		this.itemPedido = itemPedido;
 	}
-
+	
+	
 	// get e set
 	public Long getIdPedido() {
 		return idPedido;
@@ -110,4 +117,17 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
+	}
+
+
+	
+	
+	
 }

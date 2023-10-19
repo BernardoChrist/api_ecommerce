@@ -1,7 +1,7 @@
 package com.residencia.ecommerce.entities;
 
-import java.awt.Image;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -39,15 +40,18 @@ public class Produto {
 	// private String imagemNome; // revisar este atributo de imagem
 
 	@ManyToOne
-	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categora")
+	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
 	private Categoria categoria;
-
+	
+	@OneToMany(mappedBy = "produto")
+	private List<ItemPedido> itemPedido;
+	
 	// constructors
 	public Produto() {
 	}
 
 	public Produto(Long idProduto, String nome, String descricao, Integer qtdEstoque, Date dataCadastro,
-			Double valorUnitario, Categoria categoria) {
+			Double valorUnitario, Categoria categoria, List<ItemPedido> itemPedido) {
 		this.idProduto = idProduto;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -55,8 +59,9 @@ public class Produto {
 		this.dataCadastro = dataCadastro;
 		this.valorUnitario = valorUnitario;
 		this.categoria = categoria;
+		this.itemPedido = itemPedido;
 	}
-
+	
 	// get e set
 	public Long getIdProduto() {
 		return idProduto;
@@ -113,5 +118,17 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
+	}
+
+	
+	
+	
 
 }
