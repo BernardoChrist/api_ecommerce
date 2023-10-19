@@ -14,7 +14,7 @@ public class CategoriaService {
 	 CategoriaRepository categoriaRepo;
 	
 	//recuperar todos os categoriaes
-	public List<Categoria> listarCategoriaes(){
+	public List<Categoria> listarCategorias(){
 		return categoriaRepo.findAll();
 	}
 	
