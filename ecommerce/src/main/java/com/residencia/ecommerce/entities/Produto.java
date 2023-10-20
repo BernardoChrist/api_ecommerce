@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -37,7 +38,9 @@ public class Produto {
 	@Column(name = "valor_unitario", nullable = false)
 	private Double valorUnitario;
 
-	// private String imagemNome; // revisar este atributo de imagem
+	@Lob
+	@Column(name = "imagem")
+	private byte[] imagem;
 
 	@ManyToOne
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
