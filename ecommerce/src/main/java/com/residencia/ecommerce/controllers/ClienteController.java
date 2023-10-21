@@ -1,6 +1,7 @@
 package com.residencia.ecommerce.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.residencia.ecommerce.entities.Cliente;
 import com.residencia.ecommerce.services.ClienteService;
 
@@ -22,7 +24,7 @@ public class ClienteController {
 
 	@Autowired
 	ClienteService clienteService;
-
+	
 	@GetMapping
 	public ResponseEntity<List<Cliente>> listarClientes() {
 		return new ResponseEntity<>(clienteService.listarClientes(), HttpStatus.OK);
@@ -47,7 +49,8 @@ public class ClienteController {
 	public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente) {
 		return new ResponseEntity<>(clienteService.salvarCliente(cliente), HttpStatus.CREATED);
 	}
-	
+		
+
 	@PutMapping
 	public ResponseEntity<Cliente> atualizar(@RequestBody Cliente cliente) {
 		return new ResponseEntity<>(clienteService.atualizarCliente(cliente), HttpStatus.OK);
