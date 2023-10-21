@@ -57,8 +57,7 @@ public class ProdutoService {
 
 	}
 
-	public Produto salvarProdutoComFoto(String strProduto, MultipartFile arqImg)
-			throws java.io.IOException {
+	public Produto salvarProdutoComFoto(String strProduto, MultipartFile arqImg) throws java.io.IOException {
 		Produto produto = new Produto();
 
 		try {
@@ -73,4 +72,5 @@ public class ProdutoService {
 
 		return produtoRepo.save(produto);
 	}
+
 }
