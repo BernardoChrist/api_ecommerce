@@ -1,5 +1,6 @@
 package com.residencia.ecommerce.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.residencia.ecommerce.entities.Produto;
 import com.residencia.ecommerce.services.ProdutoService;
@@ -46,9 +49,15 @@ public class ProdutoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Produto> salvar(@RequestBody Produto produto) {
-		return new ResponseEntity<>(produtoService.salvarProduto(produto), HttpStatus.CREATED);
+	public ResponseEntity<Produto> salvarProdutoComFoto(@RequestPart("pdt") String strProduto, @RequestPart("img") MultipartFile arqImg) throws IOException {
+		return new ResponseEntity<>(produtoService.salvarProdutoComFoto(strProduto, arqImg), HttpStatus.CREATED);
+		
 	}
+	
+//	@PostMapping
+//    public ResponseEntity<Produto> salvar(@RequestBody Produto produto) {
+//        return new ResponseEntity<>(produtoService.salvarProduto(produto), HttpStatus.CREATED);
+//    }
 
 	@PutMapping
 	public ResponseEntity<Produto> atualizar(@RequestBody Produto produto) {
@@ -62,4 +71,6 @@ public class ProdutoController {
 		else
 			return new ResponseEntity<>("Não foi possível deletar", HttpStatus.BAD_REQUEST);
 	}
+	
+	
 }

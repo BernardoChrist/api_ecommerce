@@ -4,16 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.residencia.ecommerce.entities.Produto;
 import com.residencia.ecommerce.repositories.ProdutoRepository;
 
+import io.jsonwebtoken.io.IOException;
+
 @Service
 public class ProdutoService {
-    @Autowired
-    private ProdutoRepository produtoRepo;
+	@Autowired
+	private ProdutoRepository produtoRepo;
 
-    public List<Produto> listarProdutos() {
+	public List<Produto> listarProdutos() {
 		return produtoRepo.findAll();
 	}
 
@@ -21,7 +26,6 @@ public class ProdutoService {
 
 		return produtoRepo.findById(id).orElse(null);
 	}
-
 
 	public Produto salvarProduto(Produto produto) {
 		return produtoRepo.save(produto);
@@ -51,5 +55,22 @@ public class ProdutoService {
 
 		return false;
 
+	}
+
+	public Produto salvarProdutoComFoto(String strProduto, MultipartFile arqImg)
+			throws java.io.IOException {
+		Produto produto = new Produto();
+
+		try {
+			ObjectMapper objMp = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+			produto = objMp.readValue(strProduto, Produto.class);
+		} catch (IOException e) {
+			System.out.println("Erro ao converter a string Produto: " + e.toString());
+		}
+
+		produto.setImagem(arqImg.getBytes());
+
+		return produtoRepo.save(produto);
 	}
 }

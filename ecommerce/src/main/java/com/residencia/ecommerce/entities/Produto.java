@@ -130,6 +130,14 @@ public class Produto {
 		this.itemPedido = itemPedido;
 	}
 
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
+
 	
 	
 	
