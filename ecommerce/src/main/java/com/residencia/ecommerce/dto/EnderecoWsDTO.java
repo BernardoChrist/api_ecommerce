@@ -6,16 +6,20 @@ public class EnderecoWsDTO {
 	private String bairro;
 	private String localidade;
 	private String uf;
+	private String complemento;
 	
 	
-	public EnderecoWsDTO(String cep, String logradouro, String bairro, String localidade, String uf) {
-		super();	this.cep = cep;
+	
+
+	public EnderecoWsDTO(String cep, String logradouro, String bairro, String localidade, String uf,
+			String complemento) {
+		this.cep = cep;
 		this.logradouro = logradouro;
 		this.bairro = bairro;
 		this.localidade = localidade;
 		this.uf = uf;
+		this.complemento = complemento;
 	}
-
 
 	public EnderecoWsDTO() {
 	
@@ -50,6 +54,14 @@ public class EnderecoWsDTO {
 	}
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	
 	
