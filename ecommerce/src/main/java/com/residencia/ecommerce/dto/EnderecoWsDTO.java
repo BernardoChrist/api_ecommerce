@@ -1,11 +1,28 @@
 package com.residencia.ecommerce.dto;
 
-public class EnderecoDTO {
+public class EnderecoWsDTO {
 	private String logradouro;
 	private String bairro;
 	private String localicade;
 	private String uf;
 	
+	
+	
+	public EnderecoWsDTO(String logradouro, String bairro, String localicade, String uf) {
+		this.logradouro = logradouro;
+		this.bairro = bairro;
+		this.localicade = localicade;
+		this.uf = uf;
+	}
+	
+	
+	
+	public EnderecoWsDTO() {
+	
+	}
+
+
+
 	public String getLogradouro() {
 		return logradouro;
 	}
