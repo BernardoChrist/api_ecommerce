@@ -20,22 +20,22 @@ public class Endereco {
 	@Column(name = "cep", nullable = false)
 	private String cep;
 
-	@Column(name = "rua", nullable = false)
+	@Column(name = "rua")
 	private String rua;
 
-	@Column(name = "bairro", nullable = false)
+	@Column(name = "bairro")
 	private String bairro;
 
-	@Column(name = "cidade", nullable = false)
+	@Column(name = "cidade")
 	private String cidade;
 
-	@Column(name = "numero", nullable = false)
+	@Column(name = "numero")
 	private Integer numero;
 
-	@Column(name = "complemento", nullable = true)
+	@Column(name = "complemento")
 	private String complemento;
 
-	@Column(name = "uf", nullable = false)
+	@Column(name = "uf")
 	private String uf;
 
 	@OneToOne(mappedBy = "endereco")

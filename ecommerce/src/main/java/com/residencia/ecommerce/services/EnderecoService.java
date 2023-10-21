@@ -1,8 +1,6 @@
 package com.residencia.ecommerce.services;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +26,8 @@ public class EnderecoService {
 	}
 
 	public Endereco salvarEndereco(Endereco endereco) {
-		return enderecoRepo.save(endereco);
+		Endereco enderecoCep = getEnderecoByCep(endereco);
+		return enderecoRepo.save(enderecoCep);
 	}
 
 	public Endereco atualizarEndereco(Endereco endereco) {
@@ -56,29 +55,51 @@ public class EnderecoService {
 		return false;
 	}
 
-	public EnderecoWsDTO consultaCep(String cep) {
+	public Endereco getEnderecoByCep(Endereco endereco) {
 		RestTemplate restTemplate = new RestTemplate();
-		String uri = "https://viacep.com.br/ws/{cep}/json/";
+		String uri = "https://viacep.com.br/ws/" + endereco.getCep() + "/json";
+		EnderecoWsDTO enderecoDto = restTemplate.getForObject(uri, EnderecoWsDTO.class);
+		
 
-	
-		Map<String, String> params = new HashMap<String, String>();
+		try {
 
-		params.put("cep", cep);
-
-		EnderecoWsDTO enderecoDto = restTemplate.getForObject(uri, EnderecoWsDTO.class, params);
-
-		return enderecoDto;
-	}
-	
-	public EnderecoWsDTO getEnderecoResumidoPorId(Long id) {
-
-		Endereco endereco = enderecoRepo.findById(id).orElse(null);
-
-		if (endereco != null) {
-			EnderecoWsDTO enderecoResDTO = new EnderecoWsDTO(endereco.getCep(), endereco.getRua(), endereco.getBairro(), endereco.getCidade(), endereco.getUf());
-			
-			return enderecoResDTO;
+			if (enderecoDto != null) {
+				endereco.setCep(enderecoDto.getCep());
+				endereco.setRua(enderecoDto.getLogradouro());
+				endereco.setBairro(enderecoDto.getBairro());
+				endereco.setCidade(enderecoDto.getLocalidade());
+				endereco.setComplemento(enderecoDto.getComplemento());
+				endereco.setUf(enderecoDto.getUf());
+			} else {
+				System.out.println("CEP não encontrado ou inválido");
+			}
+		} catch (Exception e) {
+			System.out.println("Ocorreu um erro ao consultar o CEP: " + e.getMessage());
 		}
-		return null;
+
+		return endereco;
 	}
+
+//	public EnderecoWsDTO consultaCep(String cep) {
+//		RestTemplate restTemplate = new RestTemplate();
+//		String uri = "https://viacep.com.br/ws/{cep}/json/";
+//		Map<String, String> params = new HashMap<String, String>();
+//		params.put("cep", cep);
+//		EnderecoWsDTO enderecoDto = restTemplate.getForObject(uri, EnderecoWsDTO.class, params);
+//
+//		return enderecoDto;
+//	}
+//	
+//	
+//	public EnderecoWsDTO getEnderecoResumidoPorId(Long id) {
+//
+//		Endereco endereco = enderecoRepo.findById(id).orElse(null);
+//
+//		if (endereco != null) {
+//			EnderecoWsDTO enderecoResDTO = new EnderecoWsDTO(endereco.getCep(), endereco.getRua(), endereco.getBairro(), endereco.getCidade(), endereco.getUf(), endereco.getComplemento());
+//			
+//			return enderecoResDTO;
+//		}
+//		return null;
+//	}
 }

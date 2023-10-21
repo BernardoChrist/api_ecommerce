@@ -41,7 +41,7 @@ public class Cliente {
 	private List<Pedido> pedidos;
 
 	@OneToOne
-	@JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco")
+	@JoinColumn(name = "id_endereco", referencedColumnName = "id_endereco", unique = true)
 	private Endereco endereco;
 
 	// constructor
