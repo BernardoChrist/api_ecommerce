@@ -58,15 +58,16 @@ public class EnderecoService {
 
 	public EnderecoWsDTO consultaCep(String cep) {
 		RestTemplate restTemplate = new RestTemplate();
-		String uri = "viacep.com.br/ws/{cep}/json/";
+		String uri = "https://viacep.com.br/ws/{cep}/json/";
 
+	
 		Map<String, String> params = new HashMap<String, String>();
 
 		params.put("cep", cep);
 
-		EnderecoWsDTO receitaDto = restTemplate.getForObject(uri, EnderecoWsDTO.class, params);
+		EnderecoWsDTO enderecoDto = restTemplate.getForObject(uri, EnderecoWsDTO.class, params);
 
-		return receitaDto;
+		return enderecoDto;
 	}
 	
 	public EnderecoWsDTO getEnderecoResumidoPorId(Long id) {
@@ -74,7 +75,7 @@ public class EnderecoService {
 		Endereco endereco = enderecoRepo.findById(id).orElse(null);
 
 		if (endereco != null) {
-			EnderecoWsDTO enderecoResDTO = new EnderecoWsDTO(endereco.getRua(), endereco.getBairro(), endereco.getCidade(), endereco.getUf());
+			EnderecoWsDTO enderecoResDTO = new EnderecoWsDTO(endereco.getCep(), endereco.getRua(), endereco.getBairro(), endereco.getCidade(), endereco.getUf());
 			
 			return enderecoResDTO;
 		}
