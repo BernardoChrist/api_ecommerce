@@ -1,6 +1,7 @@
 package com.residencia.ecommerce.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.residencia.ecommerce.dto.EnderecoWsDTO;
 import com.residencia.ecommerce.entities.Endereco;
 import com.residencia.ecommerce.services.EnderecoService;
 
@@ -59,5 +62,12 @@ public class EnderecoController {
 			return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
 		else
 			return new ResponseEntity<>("Não foi possível deletar", HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping ("/consulta-cep/{cep}")
+	public ResponseEntity<EnderecoWsDTO> consultaCnpj(@PathVariable String cep) {
+		
+		return new ResponseEntity<>(enderecoService.consultaCep(cep), HttpStatus.OK);
+		
 	}
 }
