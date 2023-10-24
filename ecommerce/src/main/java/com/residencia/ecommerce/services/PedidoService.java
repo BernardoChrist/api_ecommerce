@@ -10,6 +10,7 @@ import com.residencia.ecommerce.dto.ItemPedidoDTO;
 import com.residencia.ecommerce.dto.RelatorioPedidoDTO;
 import com.residencia.ecommerce.entities.ItemPedido;
 import com.residencia.ecommerce.entities.Pedido;
+import com.residencia.ecommerce.exceptions.NoSuchElementException;
 import com.residencia.ecommerce.repositories.ItemPedidoRepository;
 import com.residencia.ecommerce.repositories.PedidoRepository;
 
@@ -29,8 +30,8 @@ public class PedidoService {
 	}
 
 	public Pedido buscarPedidoPorId(Long id) {
-
-		return pedidoRepo.findById(id).orElse(null);
+		return pedidoRepo.findById(id).orElseThrow(()-> new NoSuchElementException("pedido", id));
+		
 	}
 
 

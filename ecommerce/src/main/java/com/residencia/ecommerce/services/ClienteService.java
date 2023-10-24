@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.residencia.ecommerce.entities.Cliente;
+import com.residencia.ecommerce.exceptions.NoSuchElementException;
 import com.residencia.ecommerce.repositories.ClienteRepository;
 
 @Service
@@ -18,8 +19,9 @@ public class ClienteService {
 	}
 
 	public Cliente buscarClientePorId(Long id) {
+		return clienteRepo.findById(id).orElseThrow(()-> new NoSuchElementException("Cliente", id));
 
-		return clienteRepo.findById(id).orElse(null);
+		
 	}
 
 

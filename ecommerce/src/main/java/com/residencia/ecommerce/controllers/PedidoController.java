@@ -35,9 +35,7 @@ public class PedidoController {
 	public ResponseEntity<Pedido> buscarPorId(@PathVariable long id) {
 		Pedido pedido = pedidoService.buscarPedidoPorId(id);
 
-		if (pedido == null)
-			return new ResponseEntity<>(pedido, HttpStatus.NOT_FOUND);
-		else
+
 			return new ResponseEntity<>(pedido, HttpStatus.OK);
 	}
 

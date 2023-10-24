@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.residencia.ecommerce.entities.Categoria;
+import com.residencia.ecommerce.exceptions.NoSuchElementException;
 import com.residencia.ecommerce.repositories.CategoriaRepository;
 
 @Service
@@ -20,7 +21,7 @@ public class CategoriaService {
 	
 	//recuperar um categoria pela sua chave primária
 	public Categoria buscarCategoriaPorId(Long id){
-		return categoriaRepo.findById(id).orElse(null);
+		return categoriaRepo.findById(id).orElseThrow(()-> new NoSuchElementException("Categoria", id));
 	}
 	
 	//salvar um novo categoria

@@ -37,9 +37,7 @@ public class ProdutoController {
 	public ResponseEntity<Produto> buscarPorId(@PathVariable long id) {
 		Produto produto = produtoService.buscarProdutoPorId(id);
 
-		if (produto == null)
-			return new ResponseEntity<>(produto, HttpStatus.NOT_FOUND);
-		else
+		
 			return new ResponseEntity<>(produto, HttpStatus.OK);
 	}
 

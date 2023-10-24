@@ -34,9 +34,7 @@ public class EnderecoController {
 	public ResponseEntity<Endereco> buscarPorId(@PathVariable long id) {
 		Endereco endereco = enderecoService.buscarEnderecoPorId(id);
 
-		if (endereco == null)
-			return new ResponseEntity<>(endereco, HttpStatus.NOT_FOUND);
-		else
+		
 			return new ResponseEntity<>(endereco, HttpStatus.OK);
 	}
 

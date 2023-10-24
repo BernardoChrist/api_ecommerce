@@ -32,9 +32,7 @@ public class CategoriaController {
 	public ResponseEntity<Categoria> buscarPorId(@PathVariable long id) {
 		Categoria categoria = categoriaService.buscarCategoriaPorId(id);
 
-		if (categoria == null)
-			return new ResponseEntity<>(categoria, HttpStatus.NOT_FOUND);
-		else
+		
 			return new ResponseEntity<>(categoria, HttpStatus.OK);
 	}
 

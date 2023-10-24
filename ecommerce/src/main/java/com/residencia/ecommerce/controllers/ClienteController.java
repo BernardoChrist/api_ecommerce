@@ -34,9 +34,7 @@ public class ClienteController {
 	public ResponseEntity<Cliente> buscarPorId(@PathVariable long id) {
 		Cliente cliente = clienteService.buscarClientePorId(id);
 
-		if (cliente == null)
-			return new ResponseEntity<>(cliente, HttpStatus.NOT_FOUND);
-		else
+		
 			return new ResponseEntity<>(cliente, HttpStatus.OK);
 	}
 

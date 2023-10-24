@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.residencia.ecommerce.entities.ItemPedido;
+import com.residencia.ecommerce.exceptions.NoSuchElementException;
 import com.residencia.ecommerce.repositories.ItemPedidoRepository;
 
 @Service
@@ -18,8 +19,8 @@ public class ItemPedidoService {
 	}
 
 	public ItemPedido buscarItemPedidoPorId(Long id) {
-
-		return itemPedidoRepo.findById(id).orElse(null);
+		return itemPedidoRepo.findById(id).orElseThrow(()-> new NoSuchElementException("itemPedido", id));
+		
 	}
 
 
