@@ -50,14 +50,14 @@ public class ItemPedido {
 	}
 
 	public ItemPedido(Long idItemPedido, Integer quantidade, Double precoVenda, Double percentualDesconto,
-			Double valorBruto, Double valorLiquido, Produto produto, Pedido pedido) {
+			 Produto produto, Pedido pedido) {
 		super();
 		this.idItemPedido = idItemPedido;
 		this.quantidade = quantidade;
 		this.precoVenda = precoVenda;
 		this.percentualDesconto = percentualDesconto;
-		this.valorBruto = valorBruto;
-		this.valorLiquido = valorLiquido;
+		this.valorBruto = precoVenda * quantidade;
+		this.valorLiquido = valorBruto - (valorBruto * percentualDesconto);
 		this.produto = produto;
 		this.pedido = pedido;
 	}

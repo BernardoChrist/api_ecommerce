@@ -143,8 +143,4 @@ public class Produto {
 		this.imagem = imagem;
 	}
 
-	
-	
-	
-
 }

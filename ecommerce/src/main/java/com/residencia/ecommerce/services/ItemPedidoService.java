@@ -25,7 +25,10 @@ public class ItemPedidoService {
 
 
 	public ItemPedido salvarItemPedido(ItemPedido itemPedido) {
-		return itemPedidoRepo.save(itemPedido);
+		ItemPedido itemPed = new ItemPedido(itemPedido.getIdItemPedido(), itemPedido.getQuantidade(), itemPedido.getPrecoVenda(), itemPedido.getPercentualDesconto(),
+				itemPedido.getProduto(), itemPedido.getPedido());
+		
+		return itemPedidoRepo.save(itemPed);
 	}
 
 	public ItemPedido atualizarItemPedido(ItemPedido itemPedido) {
