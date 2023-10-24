@@ -45,7 +45,7 @@ public class ItemPedido {
 	@JoinColumn(name = "id_pedido", referencedColumnName = "id_pedido")
 	private Pedido pedido;
 	
-	// constructorss
+	// construtor
 	public ItemPedido() {
 	}
 
